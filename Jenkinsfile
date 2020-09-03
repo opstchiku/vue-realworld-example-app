@@ -12,14 +12,19 @@ pipeline {
                 sh "yarn install"
             }
         }
+        stage('Build') {
+            steps {
+                sh "yarn run build"
+            }
+        }
         stage('Test') {
             steps {
                 sh "yarn run test"
             }
         }
-        stage('Build') {
+        stage('Deploy') {
             steps {
-                sh "yarn run build"
+                echo "Deployed!!"
             }
         }
     }
