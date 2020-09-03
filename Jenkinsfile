@@ -2,6 +2,14 @@ pipeline {
     agent any
 
     stages {
+        stage('Echo') {
+            steps {
+                sh """
+                    pwd
+                    ls -la
+                """
+            }
+        }
         stage('Test') {
             steps {
                 sh """
