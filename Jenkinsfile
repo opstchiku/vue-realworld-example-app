@@ -2,27 +2,24 @@ pipeline {
     agent any
 
     stages {
-        stage('Echo') {
+        stage('Prepare') {
+            sh """
+                npm install -g yarn
+            """
+        }
+        stage('Install') {
             steps {
-                sh """
-                    pwd
-                    ls -la
-                """
+                sh "yarn install"
             }
         }
         stage('Test') {
             steps {
-                sh """
-                    yarn install
-                    yarn run test
-                """
+                sh "yarn run test"
             }
         }
         stage('Build') {
             steps {
-                sh """
-                    yarn run build
-                """
+                sh "yarn run build"
             }
         }
     }
