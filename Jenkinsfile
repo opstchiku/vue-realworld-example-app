@@ -2,6 +2,15 @@ pipeline {
     agent any
 
     stages {
+        stage('Prepare') {
+            steps {
+                sh """
+                    whoami
+                    pwd
+                    echo $PATH
+                """
+            }
+        }
         stage('Install') {
             steps {
                 sh "yarn install"
