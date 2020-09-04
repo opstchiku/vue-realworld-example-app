@@ -1,13 +1,13 @@
 pipeline {
     agent any
 
+    tools {nodejs "node v14"}
+
     stages {
         stage('Prepare') {
             steps {
                 sh """
-                    whoami
-                    pwd
-                    echo $PATH
+                    npm install -g yarn
                 """
             }
         }
