@@ -1,16 +1,9 @@
 pipeline {
     agent any
 
-    tools {nodejs "node v14"}
+    tools {nodejs "node"}
 
     stages {
-        stage('Prepare') {
-            steps {
-                sh """
-                    npm install -g yarn
-                """
-            }
-        }
         stage('Install') {
             steps {
                 sh "yarn install"
