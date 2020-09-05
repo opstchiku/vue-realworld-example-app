@@ -21,7 +21,12 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo "Deployed!!"
+                sshagent(['identity']) {
+                    sh """
+                        rsync -e "ssh -o StrictHostKeyChecking=no" -ahv \
+                        dist/ ${params.user}@${params.host}:/usr/share/nginx/html
+                    """
+                }
             }
         }
     }
