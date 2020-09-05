@@ -12,7 +12,7 @@ pipeline {
         stage('Replace backend') {
             steps {
                 sh """
-                    sed -i -e "s/https.*api/http:\\/\\/${params.host}:10080\\/api/g" src/common/config.js
+                    sed -i -e "s/https.*api/http:\\/\\/${params.host}\\/api/g" src/common/config.js
                 """
             }
         }
