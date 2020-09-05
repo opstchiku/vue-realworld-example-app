@@ -11,7 +11,9 @@ pipeline {
         }
         stage('Replace backend') {
             steps {
-                sh "sed -i -e 's/https.*api/http:\/\/${params.host}:10080\/api/g' src/common/config.js"
+                sh """
+                    sed -i -e "s/https.*api/http:\\/\\/${params.host}:10080\\/api/g" src/common/config.js
+                """
             }
         }
         stage('Build') {
