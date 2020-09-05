@@ -23,8 +23,8 @@ pipeline {
             steps {
                 sshagent(['identity']) {
                     sh """
-                        rsync -e "ssh -o StrictHostKeyChecking=no" -ahv \
-                        dist/ ${params.user}@${params.host}:/usr/share/nginx/html
+                        rsync --delete -e 'ssh -o StrictHostKeyChecking=no' --rsync-path='sudo rsync' \
+                         -ahv dist/ ${params.user}@${params.host}:/usr/share/nginx/html
                     """
                 }
             }
